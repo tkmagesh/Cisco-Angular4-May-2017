@@ -9,7 +9,11 @@ export class BugOperationService{
 		};
 		return newBug;
 	}
-	toggle(bug : IBug) : void {
-		bug.isClosed = !bug.isClosed;
+	toggle(bug : IBug) : IBug {
+		return {
+			name : bug.name,
+			isClosed : !bug.isClosed,
+			createdAt : bug.createdAt
+		}
 	}
 }

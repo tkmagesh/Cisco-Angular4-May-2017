@@ -23,11 +23,12 @@ export class BugTrackerComponent{
 
 	onAddNewClick(newBugName : string){
 		var newBug = this._bugOperations.createNew(newBugName);
-		this.bugs.push(newBug);
+		this.bugs = [...this.bugs, newBug];
 	}
 
 	onBugClick(bug : IBug){
-		this._bugOperations.toggle(bug);
+		this.bugs = this.bugs.map(bugInList => 
+			bugInList === bug ? this._bugOperations.toggle(bug) : bugInList);
 	}
 
 	onRemoveClosedClick(){
@@ -38,12 +39,4 @@ export class BugTrackerComponent{
 		}
 	}
 
-	getClosedCount(){
-		let closedCount = 0;
-		for(let index = 0; index < this.bugs.length; index++){
-			if (this.bugs[index].isClosed)
-				++closedCount;
-		}
-		return closedCount;
-	}
 }
