@@ -21,7 +21,7 @@ export class BugTrackerComponent{
 		this.bugs.push(this._bugOperations.createNew('Data integrity error'));
 	}
 
-	onAddNewClick(newBugName : string){
+	onNewBug(newBugName : string){
 		var newBug = this._bugOperations.createNew(newBugName);
 		this.bugs = [...this.bugs, newBug];
 	}

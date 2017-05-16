@@ -6,12 +6,13 @@ import { IBug } from '../models/IBug';
 })
 export class ClosedCountPipe implements PipeTransform{
 	transform(bugs : Array<IBug>) : number{
-		console.log('closedCount pipe triggered');
-		let closedCount = 0;
+		/*let closedCount = 0;
 		for(let index = 0; index < bugs.length; index++){
 			if (bugs[index].isClosed)
 				++closedCount;
 		}
-		return closedCount;
+		return closedCount;*/
+
+		return bugs.reduce((result, bug) => bug.isClosed ? ++result : result, 0);
 	}
 }
