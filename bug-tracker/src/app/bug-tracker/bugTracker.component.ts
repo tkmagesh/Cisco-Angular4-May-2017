@@ -11,7 +11,14 @@ export class BugTrackerComponent{
 	bugs : Array<IBug> = [];
 
 	constructor(private _bugOperations : BugOperationService){
-		
+		this.populateTestData();
+	}
+
+	private populateTestData(){
+		this.bugs.push(this._bugOperations.createNew('Server communication error'));
+		this.bugs.push(this._bugOperations.createNew('User actions not recognized'));
+		this.bugs.push(this._bugOperations.createNew('Application not responding'));
+		this.bugs.push(this._bugOperations.createNew('Data integrity error'));
 	}
 
 	onAddNewClick(newBugName : string){
