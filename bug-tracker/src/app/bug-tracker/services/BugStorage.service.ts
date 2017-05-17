@@ -8,7 +8,7 @@ export class BugStorageService{
 	private currentBugId :number = 0;
 
 	constructor(private bugOperations : BugOperationService){
-
+		
 	}
 	getAll(){
 		let result = [];

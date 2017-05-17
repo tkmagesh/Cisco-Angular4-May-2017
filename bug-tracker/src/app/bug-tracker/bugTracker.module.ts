@@ -11,6 +11,7 @@ import { ClosedCountPipe } from './pipes/closedCount.pipe';
 import { BugStatsComponent } from './bug-stats/bug-stats.component';
 import { BugEditComponent } from './bug-edit/bug-edit.component';
 import { BugStorageService } from './services/BugStorage.service';
+import { BugServerService } from './services/BugServer.service';
 
 @NgModule({
 	declarations : [
@@ -21,7 +22,8 @@ import { BugStorageService } from './services/BugStorage.service';
 	],
 	providers : [
 		BugOperationService,
-		BugStorageService
+		BugStorageService,
+		BugServerService
 	],
 	imports : [
 		UtilsModule,

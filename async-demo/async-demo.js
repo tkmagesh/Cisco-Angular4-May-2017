@@ -29,8 +29,54 @@ var app = (function(){
 		});
 	}
 
+	var addAsyncEvents = (function(){
+		var callbacks = [];
+		function subscribe(callback){
+			if (typeof callback === 'function')
+				callbacks.push(callback);
+		}
+		function add(x,y){
+			console.log(`		[@Service] processing ${x} and ${y}`);
+			setTimeout(function(){
+				var result = x + y;
+				console.log(`		[@Service] returning result`);
+				callbacks.forEach(callback => callback(result));
+			},3000);
+		}
+		return {
+			subscribe : subscribe,
+			add: add
+		};
+	})();
+
+	function addAsyncPromise(x,y){
+		console.log(`		[@Service] processing ${x} and ${y}`);
+		var promise = new Promise(function(resolveFn, rejectFn){
+
+			setTimeout(function(){
+				var result = x + y;
+				console.log(`		[@Service] returning result`);
+				resolveFn(result);
+			},3000);
+
+		});
+		return promise;
+	}
+
+
 	return{
 		addSyncClient : addSyncClient,
-		addAsyncClient : addAsyncClient
+		addAsyncClient : addAsyncClient,
+		addAsyncEvents: addAsyncEvents,
+		addAsyncPromise : addAsyncPromise
 	}
 })();
+
+
+
+
+
+
+
+
+

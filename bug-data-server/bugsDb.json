@@ -26,6 +26,12 @@
       "isClosed": false,
       "createdAt": "2017-05-13T09:00:28.193Z",
       "severity": 1
+    },
+    {
+      "id": 6,
+      "name": "Reactive extensions are not reactive",
+      "isClosed": false,
+      "createdAt": "2017-05-17T09:51:08.897Z"
     }
   ],
   "employees": [

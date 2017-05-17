@@ -1,26 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IBug } from './models/IBug';
 //import { BugOperationService } from './services/BugOperartion.service';
 import { BugStorageService } from './services/BugStorage.service';
 
+//import { Http } from '@angular/http';
+//import 'rxjs/Rx';
+
+import { BugServerService } from './services/BugServer.service';
+
+declare var fetch;
 
 @Component({
 	selector : 'bug-tracker',
 	templateUrl : 'bugTracker.component.html'
 })
-export class BugTrackerComponent{
+export class BugTrackerComponent implements OnInit{
 	bugs : Array<IBug> = [];
 	sortBugBy : string = '';
 	sortBugDescending : boolean = false;
 	
-	constructor(private bugStorage : BugStorageService){
-		this.bugs = this.bugStorage.getAll();
+	ngOnInit(){
+		/*fetch('http://localhost:3000/bugs')
+			.then(function(response){ return response.json();})
+			.then((bugs) => this.bugs = bugs);*/
+
+		this.bugService
+			.getAll()
+			.subscribe(bugs  => this.bugs = bugs);
+	}
+
+	constructor(private bugStorage : BugStorageService, private bugService : BugServerService){
+		//this.bugs = this.bugStorage.getAll();
+		/*http
+			.get('http://localhost:3000/bugs')
+			.map(response  => response.json())
+			.subscribe(bugs => this.bugs= bugs);*/
 	}
 
 	
 	onNewBug(newBugName : string){
-		var newBug = this.bugStorage.addNew(newBugName);
-		this.bugs = [...this.bugs, newBug];
+		//var newBug = this.bugStorage.addNew(newBugName);
+		this.bugService
+			.addNew(newBugName)
+			.subscribe(newBug => this.bugs = [...this.bugs, newBug]);
+		
 	}
 
 	onBugClick(bug : IBug){
