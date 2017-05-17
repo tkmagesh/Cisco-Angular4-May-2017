@@ -10,7 +10,9 @@ import { BugStorageService } from './services/BugStorage.service';
 })
 export class BugTrackerComponent{
 	bugs : Array<IBug> = [];
-
+	sortBugBy : string = '';
+	sortBugDescending : boolean = false;
+	
 	constructor(private bugStorage : BugStorageService){
 		this.bugs = this.bugStorage.getAll();
 	}

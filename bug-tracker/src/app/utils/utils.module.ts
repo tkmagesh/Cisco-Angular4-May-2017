@@ -2,15 +2,18 @@ import { NgModule } from '@angular/core';
 
 import { SortPipe } from './pipes/sort.pipe';
 import { TrimTextPipe } from './pipes/trimText.pipe';
+import { ElapsedPipe } from './pipes/elapsed.pipe';
 
 @NgModule({
 	declarations : [
 		SortPipe,
-		TrimTextPipe
+		TrimTextPipe,
+		ElapsedPipe
 	],
 	exports : [
 		SortPipe,
-		TrimTextPipe
+		TrimTextPipe,
+		ElapsedPipe
 	]
 })
 export class UtilsModule{
