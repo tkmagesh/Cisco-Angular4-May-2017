@@ -1,8 +1,10 @@
+
 import { IBug } from '../models/IBug';
 
 export class BugOperationService{
-	createNew(bugName : string) : IBug {
+	createNew(id : number, bugName : string) : IBug {
 		var newBug : IBug = {
+			id : id,
 			name : bugName,
 			isClosed : false,
 			createdAt : new Date()
@@ -11,6 +13,7 @@ export class BugOperationService{
 	}
 	toggle(bug : IBug) : IBug {
 		return {
+			id : bug.id,
 			name : bug.name,
 			isClosed : !bug.isClosed,
 			createdAt : bug.createdAt

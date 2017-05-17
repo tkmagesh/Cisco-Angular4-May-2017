@@ -10,6 +10,7 @@ import { BugOperationService } from './services/BugOperartion.service';
 import { ClosedCountPipe } from './pipes/closedCount.pipe';
 import { BugStatsComponent } from './bug-stats/bug-stats.component';
 import { BugEditComponent } from './bug-edit/bug-edit.component';
+import { BugStorageService } from './services/BugStorage.service';
 
 @NgModule({
 	declarations : [
@@ -19,7 +20,8 @@ import { BugEditComponent } from './bug-edit/bug-edit.component';
 		BugEditComponent
 	],
 	providers : [
-		BugOperationService
+		BugOperationService,
+		BugStorageService
 	],
 	imports : [
 		UtilsModule,
