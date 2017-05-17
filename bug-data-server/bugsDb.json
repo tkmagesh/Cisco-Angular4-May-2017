@@ -32,6 +32,11 @@
       "name": "Reactive extensions are not reactive",
       "isClosed": false,
       "createdAt": "2017-05-17T09:51:08.897Z"
+    },
+    {
+      "id": 7,
+      "name": "Application has no style whatsoever",
+      "isClosed": false
     }
   ],
   "employees": [
